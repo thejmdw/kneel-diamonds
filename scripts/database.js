@@ -25,12 +25,18 @@ const database = {
         { id: 4, metal: "Platinum", price: 795.45 },
         { id: 5, metal: "Palladium", price: 1241.0 }
     ],
+    types: [
+        { id: 1, style: "Ring", upCharge: 1},
+        { id: 2, style: "Earring", upCharge: 2},
+        { id: 3, style: "Necklace", upCharge: 4}
+    ],
     customOrders: [
         {
             id: 1,
             metalId: 3,
             sizeId: 2,
             styleId: 3,
+            typeId: 1,
             timestamp: 1614659931693
         }
     ],
@@ -52,6 +58,10 @@ export const getStyles = () => {
     return [...database.styles]
 }
 
+export const getTypes = () => {
+    return [...database.types]
+}
+
 export const getOrders = () => {
     return [...database.customOrders]
 }
@@ -68,6 +78,10 @@ export const setStyle = (id) => {
     database.orderBuilder.styleId = id
 }
 
+export const setType = (id) => {
+    database.orderBuilder.typeId = id
+}
+
 export const addCustomOrder = () => {
     const newOrder = {...database.orderBuilder}
 
@@ -81,3 +95,4 @@ export const addCustomOrder = () => {
 
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
+  
